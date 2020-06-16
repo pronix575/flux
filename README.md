@@ -1,6 +1,6 @@
-![Version](https://img.shields.io/badge/version-1.0.0-orange.svg)
+![Version](https://img.shields.io/badge/version-1.0.2-orange.svg)
 
-![](/screenshots/logo.png)
+![](/screenshots/logo.flux.png)
 # Flux.js
 ## A simple library for creating reactive applications using streams 
 
