@@ -45,7 +45,7 @@ export class Stream<T> {
         })
 
         this._difference = diff(oldState, { data: this.data })
-        // console.log(oldState, { data: this.data })
+
         if (!this.difference) return this
 
         this
