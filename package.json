@@ -1,0 +1,33 @@
+{
+  "name": "@pronix/flux",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "setup": "yarn install",
+    "build": "tsc src/index.ts --declaration --module commonjs --target es6 --esModuleInterop --outDir dist",
+    "start": "node dist/index.js",
+    "dev:build": "tsc --watch",
+    "dev:start": "nodemon dist/index.js",
+    "prepublish": "yarn build"
+  },
+  "description": "Framework for building progressive console applications on node.js platform",
+  "bugs": {
+    "url": "https://github.com/pronix575/hyper-flow/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pronix575/hyper-flow.git"
+  },
+  "homepage": "https://github.com/pronix575/hyper-flow#readme",
+  "keywords": [
+    "store",
+    "observable",
+    "data-flow",
+    "reactive"
+  ],
+  "dependencies": {
+    "@types/deep-diff": "^1.0.0",
+    "deep-diff": "^1.0.2"
+  }
+}
