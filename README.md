@@ -1,11 +1,14 @@
-![Version](https://img.shields.io/badge/version-1.0.2-orange.svg)
-
 ![](/screenshots/logo.flux.png)
 
 # Flux.js
-## A simple library for creating reactive applications using streams 
-
-### Using:
+![](https://img.shields.io/github/package-json/v/pronix575/flux) ![](https://img.shields.io/npm/dt/@pronix/flux.svg)
+### A simple library for creating reactive applications using streams 
+## Getting started
+### installation:
+```
+$ yarn add @pronix/flux
+```
+### using:
 ```typescript
 // TypeScript + es6 modules
 
@@ -44,7 +47,7 @@ stream
 ```javascript
 // JavaScipt + require
 
-const Flux = require('@pronix/flux')
+const Flux = require('@pronix/flux').default
 
 const stream = new Flux([])
 
