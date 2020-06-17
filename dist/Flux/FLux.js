@@ -19,7 +19,7 @@ class Stream {
         this.subscribers.push(...subscribers);
         return this;
     }
-    unsubscribe(name) {
+    unsubscribe() {
         this._subscribers = [];
         return this;
     }

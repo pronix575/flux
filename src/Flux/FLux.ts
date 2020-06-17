@@ -29,7 +29,7 @@ export class Stream<T> {
         return this
     }
 
-    unsubscribe(name: string): Stream<T> {
+    unsubscribe(): Stream<T> {
         
         this._subscribers = []
 

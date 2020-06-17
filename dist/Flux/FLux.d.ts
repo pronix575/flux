@@ -8,7 +8,7 @@ export declare class Stream<T> {
     get data(): T;
     get subscribers(): Subscriber<T>[];
     subscribe(...subscribers: Array<Subscriber<T>>): Stream<T>;
-    unsubscribe(name: string): Stream<T>;
+    unsubscribe(): Stream<T>;
     dispatch(...callbacks: Array<DispatchCallback<T>>): Stream<T>;
 }
 export default Stream;
