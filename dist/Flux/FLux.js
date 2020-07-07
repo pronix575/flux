@@ -1,6 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const deep_diff_1 = require("deep-diff");
+const clone_1 = __importDefault(require("clone"));
 class Stream {
     constructor(_data, _subscribers = []) {
         this._data = _data;
@@ -23,12 +27,12 @@ class Stream {
         this._subscribers = [];
         return this;
     }
-    dispatch(...callbacks) {
-        const oldState = Object.create({ data: this.data });
-        callbacks.forEach((callback) => {
+    dispatch(...callStack) {
+        const oldState = clone_1.default(this.data);
+        callStack.forEach(callback => {
             this._data = callback(this._data);
         });
-        this._difference = deep_diff_1.diff(oldState, { data: this.data });
+        this._difference = deep_diff_1.diff(oldState, this.data);
         if (!this.difference)
             return this;
         this
@@ -39,3 +43,4 @@ class Stream {
 }
 exports.Stream = Stream;
 exports.default = Stream;
+exports.Flux = Stream;

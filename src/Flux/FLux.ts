@@ -1,9 +1,10 @@
-import { Subscriber, DispatchCallback } from "./stream.types"
+import { Subscriber, DispatchCallback, CallStack, IStream } from "./stream.types"
 import { diff } from 'deep-diff'
+import clone from 'clone'
 
-export class Stream<T> {
+export class Stream<T> implements IStream<T> {
 
-    private _difference: any
+    private _difference: Array<any> | undefined
 
     constructor(
         private _data: T,
@@ -23,28 +24,28 @@ export class Stream<T> {
     }
 
     subscribe(...subscribers: Array<Subscriber<T>>): Stream<T> {
-
+ 
         this.subscribers.push(...subscribers)
 
         return this
     }
 
-    unsubscribe(): Stream<T> {
-        
-        this._subscribers = []
+    unsubscribe(): Stream<T> { 
 
+        this._subscribers = []
+        
         return this
     }    
 
-    dispatch(...callbacks: Array<DispatchCallback<T>>): Stream<T> {
-        
-        const oldState = Object.create({ data: this.data })
+    dispatch(...callStack: CallStack<T>): Stream<T> {
 
-        callbacks.forEach((callback) => {
+        const oldState = clone(this.data)
+
+        callStack.forEach(callback => {
             this._data = callback(this._data)
         })
 
-        this._difference = diff(oldState, { data: this.data })
+        this._difference = diff(oldState, this.data)
 
         if (!this.difference) return this
 
@@ -56,4 +57,5 @@ export class Stream<T> {
     }
 }
 
-export default Stream
+export default Stream 
+export const Flux = Stream
