@@ -1,4 +1,4 @@
-import { Subscriber, DispatchCallback, CallStack, IStream } from "./stream.types"
+import { Subscriber, CallStack, IStream } from "./stream.types"
 import { diff } from 'deep-diff'
 import clone from 'clone'
 
